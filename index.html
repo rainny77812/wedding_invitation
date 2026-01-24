@@ -15,14 +15,24 @@
                         url('DSC_3547.jpg') no-repeat 50% 30%/cover;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
             /* padding-bottom: 60%; */
             color: white;
             text-align: center;
+            padding-top: 50vh; 
+            
+            /* 為了不讓容器總高度變大，記得加上這行 */
+            box-sizing: border-box;
         }
-
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; font-family: serif; }
+        
+        .hero-img {
+            width: 80%;       /* 寬度佔螢幕 80% */
+            max-width: 400px; /* 最大不超過 400px */
+            border-radius: 10px; /* 圓角效果 */
+            margin-bottom: 20px; /* 跟文字拉開距離 */
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; font-family: 'Noto Serif TC',serif; }
         .hero p { font-size: 1.2rem; letter-spacing: 2px; }
 
         /* 內容區塊 */
@@ -58,20 +68,32 @@
         <h1>冠穎 & 依汶</h1>
         <p>2026 . 03 . 28 — 我們要結婚了</p>
     </section>
-
+    
     <style>
-        .swiper { width: 100%; max-width: 600px; height: 400px; margin: 40px auto; border-radius: 15px; }
-        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .swiper { width: 100%; max-width: 600px; height: 450px; margin: 40px auto; border-radius: 15px; }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center;}
+        /* .swiper-slide:nth-child(2) img {object-position: center 30%;transform: scale(0.7);} */
         /* 自訂分頁顏色 */
-        .swiper-pagination-bullet-active { background: #d4a373; }
+        .custom-adjust0 img {transform: scale(1);}
+        .custom-adjust1 img {object-position: center 35%}
+        .custom-adjust2 img {object-position: center 30%}
+        .custom-adjust3 img {object-position: center 45%}
+        swiper-pagination-bullet-active { background: #d99a5b; }
     </style>
 
     <section class="photo-gallery">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800" alt="婚紗照1"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800" alt="婚紗照2"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519225495810-751231221523?q=80&w=800" alt="婚紗照3"></div>
+                <div class="swiper-slide"><img src="DSC_3566.jpg" alt="婚紗照0"></div>
+                <div class="swiper-slide custom-adjust0"><img src="DSC_3505.jpg" alt="婚紗照1"></div>
+                <div class="swiper-slide custom-adjust1"><img src="DSC_3528.jpg" alt="婚紗照2"></div>
+                <div class="swiper-slide custom-adjust2"><img src="DSC_3546.jpg" alt="婚紗照3"></div>
+                <div class="swiper-slide"><img src="DSC_3560.jpg" alt="婚紗照4"></div>
+                <div class="swiper-slide"><img src="DSC_3631.jpg" alt="婚紗照5"></div>
+                <div class="swiper-slide"><img src="DSC_3686.jpg" alt="婚紗照6"></div>
+                <div class="swiper-slide custom-adjust3"><img src="DSC_3689.jpg" alt="婚紗照7"></div>
+                <div class="swiper-slide"><img src="DSC_3704.jpg" alt="婚紗照8"></div>
+                <div class="swiper-slide"><img src="DSC_3743.jpg" alt="婚紗照9"></div>
             </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next" style="color: white;"></div>
@@ -94,14 +116,14 @@
 
             <div class="details">
                 <strong>【宴客地點】</strong><br>
-                台北凱悅大飯店 3樓 禧悅廳<br>
-                台北市信義區松壽路 2 號<br><br>
+                皇潮鼎宴禮宴會館 - 彰化員林 2 樓 A 廳<br>
+                彰化縣員林市員林大道一段 298 號<br><br>
                 <strong>【婚禮時間】</strong><br>
-                2026年05月20日 (星期三)<br>
-                11:30 入席 | 12:00 準時開席
+                2026年03月28日 (星期六)<br>
+                12:00 入席 | 12:30 準時開宴
             </div>
 
-            <a href="https://forms.gle/your-google-form-link" target="_blank" class="btn">填寫出席問卷</a>
+            <!-- <a href="https://forms.gle/your-google-form-link" target="_blank" class="btn">填寫出席問卷</a> -->
         </div>
     </section>
     
@@ -112,7 +134,7 @@
 
     <script>
         // 設定婚禮日期
-        const weddingDate = new Date("May 20, 2026 12:00:00").getTime();
+        const weddingDate = new Date("Mar 28, 2026 12:00:00").getTime();
 
         setInterval(function() {
             const now = new Date().getTime();
