@@ -2,6 +2,8 @@
 <html lang="zh-Hant">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>We Are Getting Married!</title>
@@ -71,7 +73,7 @@
 
     <section class="hero">
         <!-- <h1>冠穎 & 依汶</h1> -->
-        <img src="name.png" alt="冠穎 & 依汶" class="name-title">
+        <img src="name.png" alt="冠穎 & 依汶" class="name-title" data-aos="fade-right">
         <p>2026 . 03 . 28 — 我們要結婚了</p>
     </section>
     <style>
@@ -143,6 +145,7 @@
             justify-content: center;
             align-items: center;    /* 讓圖片跟文字「垂直對齊」中間 */
             gap: 20px;              /* 圖片與文字中間的間距 */
+            flex-wrap: wrap;         /* 空間不足時自動換行 */
         }
 
         .side-img{
@@ -203,6 +206,14 @@
                 prevEl: ".swiper-button-prev",
             },
         });
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init({
+        duration: 1000, // 動畫持續時間 (毫秒)
+        once: true,     // 是否只動畫一次（滑回去再滑下來要不要再動一次）
+    });
     </script>
 </body>
 </html>
