@@ -32,12 +32,17 @@
             border-radius: 10px; /* 圓角效果 */
             margin-bottom: 20px; /* 跟文字拉開距離 */
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; font-family: 'Noto Serif TC',serif; }
+        
+        
+        /* .hero h1 { font-size: 3rem; margin-bottom: 10px; font-family: 'Noto Serif TC',serif; } */
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
         .hero p { font-size: 1.2rem; letter-spacing: 2px; }
 
         /* 內容區塊 */
-        .content { padding: 60px 20px; text-align: center; max-width: 800px; margin: auto; }
-        .info-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-top: -50px; }
+        .content0 { padding: 60px 20px; text-align: center; max-width: 800px; margin: auto; }
+        .info-card0 { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-top: -50px; }
+        .content1 { padding: 60px 20px; text-align: center; max-width: 800px; margin: auto; }
+        .info-card1 { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-top: -100px; }
         
         h2 { color: #d4a373; font-size: 2rem; }
         .details { line-height: 2; margin: 30px 0; font-size: 1.1rem; }
@@ -65,10 +70,20 @@
 <body>
 
     <section class="hero">
-        <h1>冠穎 & 依汶</h1>
+        <!-- <h1>冠穎 & 依汶</h1> -->
+        <img src="name.png" alt="冠穎 & 依汶" class="name-title">
         <p>2026 . 03 . 28 — 我們要結婚了</p>
     </section>
-    
+    <style>
+        .name-title {
+            width: 80%;       /* 寬度隨手機縮放 */
+            max-width: 400px; /* 電腦版不要太大 */
+            height: auto;
+            margin-bottom: 10px;
+            /* 這裡可以加一點陰影，讓白色透明字在背景中更明顯 */
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        }
+    </style>
     <style>
         .swiper { width: 100%; max-width: 600px; height: 450px; margin: 40px auto; border-radius: 15px; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center;}
@@ -103,26 +118,52 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <section class="content">
-        <div class="info-card">
+    <section class="content0">
+        <div class="info-card0">
+            
             <h2>Wedding Invitation</h2>
             <p>誠摯地邀請您參與我們的幸福時刻</p>
             
-            <div id="countdown">
-                <div class="time-box"><span id="days">0</span>天</div>
-                <div class="time-box"><span id="hours">0</span>時</div>
-                <div class="time-box"><span id="mins">0</span>分</div>
+            <div class="flex-group">
+                
+                <h3>倒數 </h3>
+                <div id="countdown">
+                    <div class="time-box"><span id="days">0</span>天</div>
+                    <div class="time-box"><span id="hours">0</span>時</div>
+                    <div class="time-box"><span id="mins">0</span>分</div>
+                </div>
+                <img src="01.png" alt="圖片01" class="side-img">
             </div>
+        </div>
+    </section>
+    
+    <style>
+        .flex-group {
+            display: flex;          /* 開啟並排功能 */
+            justify-content: center;
+            align-items: center;    /* 讓圖片跟文字「垂直對齊」中間 */
+            gap: 20px;              /* 圖片與文字中間的間距 */
+        }
 
+        .side-img{
+            width: 230px;            /* 限制圖片寬度 */
+            height: 200px;           /* 限制圖片高度 */
+            object-fit: cover;      /* 避免圖片變形 */
+            margin-left: 15px; /* 讓圖片跟在文字後面 */
+            border-radius: 8px;     /* 給圖片一點點圓角（可選） */
+        }
+    </style>
+
+    <section class="content1">
+        <div class="info-card1">
             <div class="details">
                 <strong>【宴客地點】</strong><br>
-                皇潮鼎宴禮宴會館 - 彰化員林 2 樓 A 廳<br>
+                皇潮鼎宴禮宴會館 2 樓 A 廳<br>
                 彰化縣員林市員林大道一段 298 號<br><br>
                 <strong>【婚禮時間】</strong><br>
                 2026年03月28日 (星期六)<br>
                 12:00 入席 | 12:30 準時開宴
             </div>
-
             <!-- <a href="https://forms.gle/your-google-form-link" target="_blank" class="btn">填寫出席問卷</a> -->
         </div>
     </section>
