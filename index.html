@@ -126,16 +126,13 @@
             <h2>Wedding Invitation</h2>
             <p>誠摯地邀請您參與我們的幸福時刻</p>
             
-            <div class="flex-group">
-                
-                <h3>倒數 </h3>
-                <div id="countdown">
-                    <div class="time-box"><span id="days">0</span>天</div>
-                    <div class="time-box"><span id="hours">0</span>時</div>
-                    <div class="time-box"><span id="mins">0</span>分</div>
-                </div>
-                <img src="01.png" alt="圖片01" class="side-img">
+            <div id="countdown">
+                <div class="time-box"><span id="days">0</span>天</div>
+                <div class="time-box"><span id="hours">0</span>時</div>
+                <div class="time-box"><span id="mins">0</span>分</div>
             </div>
+
+            <img src="01.png" alt="圖片01" class="side-img">
         </div>
     </section>
     
@@ -152,7 +149,8 @@
             width: 230px;            /* 限制圖片寬度 */
             height: 200px;           /* 限制圖片高度 */
             object-fit: cover;      /* 避免圖片變形 */
-            margin-left: 15px; /* 讓圖片跟在文字後面 */
+            margin-left: 30px; /* 讓圖片跟在文字後面 */
+            margin-top: -90px; /* 讓圖片跟在文字後面 */
             border-radius: 8px;     /* 給圖片一點點圓角（可選） */
         }
     </style>
