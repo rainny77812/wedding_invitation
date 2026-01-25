@@ -34,7 +34,13 @@
             border-radius: 10px; /* 圓角效果 */
             margin-bottom: 20px; /* 跟文字拉開距離 */
         }
-        
+        /* 確保 AOS 標籤在動畫執行前是隱形的 */
+        [data-aos] {
+            pointer-events: none;
+        }
+        .aos-animate {
+            pointer-events: auto;
+        }
         
         /* .hero h1 { font-size: 3rem; margin-bottom: 10px; font-family: 'Noto Serif TC',serif; } */
         .hero h1 { font-size: 3rem; margin-bottom: 10px; }
@@ -47,8 +53,73 @@
         .info-card1 { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-top: -100px; }
         
         h2 { color: #d4a373; font-size: 2rem; }
+        h3 { color: #dfc5e1; font-size: 2rem; }
+        h4 { color: #dfc5e1; font-size: 1.2rem;}
         .details { line-height: 2; margin: 30px 0; font-size: 1.1rem; }
+        #entrance-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('DSC_3738.jpg'); /* 替換成你的圖片路徑 */
+            background-size: cover;      /* 讓圖片鋪滿全螢幕 */
+            background-position: center; /* 讓圖片置中 */
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* 確保在最上層 */
+            transition: opacity 3s ease, visibility 3s; /* 消失時的過場動畫 */
+            cursor: pointer;
+        }
+        #music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
 
+        /* 音樂播放時的旋轉動畫 */
+        .rotating {
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        /* 當加上 .hidden 類別時，遮罩會慢慢變透明並消失 */
+        #entrance-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .entrance-content {
+            text-align: center;
+            color: #8d6e63;
+        }
+
+        .heart-icon {
+            font-size: 35px;
+            margin: 20px 0;
+            margin-top: -200px;
+            animation: pulse 1.5s infinite; /* 讓愛心跳動，引導點擊 */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
         /* 按鈕 */
         .btn {
             background-color: #d4a373;
@@ -70,6 +141,20 @@
     
 </head>
 <body>
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        您的瀏覽器不支援音樂播放。
+    </audio>
+    <div id="entrance-overlay" onclick="startWedding()">
+        <div class="entrance-content">
+            <!-- <h3>誠摯邀請</h3> -->
+            <div class="heart-icon">❤️</div>
+            <h4>點擊開啟</h4>
+        </div>
+    </div>
+    <div id="music-control" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+    </div>
 
     <section class="hero">
         <!-- <h1>冠穎 & 依汶</h1> -->
@@ -210,10 +295,44 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-    AOS.init({
-        duration: 2000, // 動畫持續時間 (毫秒)
-        once: true,     // 是否只動畫一次（滑回去再滑下來要不要再動一次）
-    });
+    // AOS.init({
+    //     duration: 2000, // 動畫持續時間 (毫秒)
+    //     once: true,     // 是否只動畫一次（滑回去再滑下來要不要再動一次）
+    // });
+    function toggleMusic() {
+        const music = document.getElementById('bgMusic');
+        const icon = document.getElementById('music-icon');
+        const btn = document.getElementById('music-control');
+
+        if (music.paused) {
+            music.play();
+            btn.classList.add('rotating');
+        } else {
+            music.pause();
+            btn.classList.remove('rotating');
+        }
+    }
+    function startWedding() {
+        // 1. 取得遮罩元素並加上 .hidden 類別
+        const overlay = document.getElementById('entrance-overlay');
+        overlay.classList.add('hidden');
+
+        // 2. 啟動音樂
+        const music = document.getElementById('bgMusic');
+        music.volume = 0.2;
+        music.play().catch(function(error) {
+            console.log("播放被瀏覽器攔截了:", error);
+        });
+
+        // 3. (選配) 這裡可以重新啟動 AOS 動畫，讓主頁面的動畫從頭開始
+        setTimeout(() => {
+            AOS.init({
+                duration: 2000,
+                once: true,
+                offset: 100 // 距離滾動條多少距離觸發
+            });
+        }, 2000);
+    }
     </script>
 </body>
 </html>
