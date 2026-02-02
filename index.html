@@ -276,10 +276,10 @@
     <style>
         .fig01 {
             position: absolute;
-            display: block;     /* 将图片转为块级元素 */
+            /* display: block;     将图片转为块级元素 */
             /* margin-left: 80%; */
             margin-top: -12vh;
-            right: 10%;         /* 距離父層右側 30% */
+            right: 0%;         /* 距離父層右側 30% */
             width: 45vh; /* 但最大不超过 500px */
             max-width: 200px;
             z-index: 500;
@@ -290,9 +290,9 @@
         .container001 {
         position: relative;
         width: 100%;       /* 寬度隨螢幕縮放 */
-        height: 0%;      /* 使用 vh (螢幕高度百分比)，讓它在手機上也有一定高度 */
+        height: 1vh;      /* 使用 vh (螢幕高度百分比)，讓它在手機上也有一定高度 */
         max-width: 400px;  /* 限制大螢幕時不要過大 */
-        margin: 0%;
+        margin: auto;
         }
         .slideshow-container {
         position: relative;
