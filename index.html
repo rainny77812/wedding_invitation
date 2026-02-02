@@ -265,6 +265,9 @@
                     <img src="IMG_0668.JPG" class="fade-img">
                     <img src="IMG_0669.JPG" class="fade-img">
                 </div>
+                <div class="container001">
+                    <img src="02.png" class="fig01">
+                </div>
             </div>
         </div>
     </section>
@@ -272,15 +275,25 @@
     
     <style>
         .fig01 {
+            position: absolute;
             display: block;     /* 将图片转为块级元素 */
-            margin-left: auto;  /* 左右外边距自动平分 */
-            margin-right: auto;
-            /* margin-top: -100px; */
-            width: 100%;      /* 让图片自动撑满父容器的宽度 */
-            max-width: 200px; /* 但最大不超过 500px */
+            /* margin-left: 80%; */
+            margin-top: -80px;
+            right: 10%;         /* 距離父層右側 30% */
+            width: 45%; /* 但最大不超过 500px */
+            max-width: 200px;
+            z-index: 500;
             /* border-radius: 10px; 加个圆角 */
             /* box-shadow: 2px 2px 5px rgba(0,0,0,0.3); 加个阴影 */
             }
+
+        .container001 {
+        position: relative;
+        width: 100%;       /* 寬度隨螢幕縮放 */
+        height: 0vh;      /* 使用 vh (螢幕高度百分比)，讓它在手機上也有一定高度 */
+        max-width: 400px;  /* 限制大螢幕時不要過大 */
+        margin: auto;
+        }
         .slideshow-container {
         position: relative;
         width: 100%;       /* 寬度隨螢幕縮放 */
@@ -294,7 +307,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%); /* 絕對定位下的完美居中 */
+        transform: translate(-53%, -50%); /* 絕對定位下的完美居中 */
         
         width: 100%;
         height: 100%;
