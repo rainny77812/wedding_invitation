@@ -114,6 +114,7 @@
             margin-top: -200px;
             animation: pulse 1.5s infinite; /* 讓愛心跳動，引導點擊 */
         }
+        
 
         @keyframes pulse {
             0% { transform: scale(1); }
@@ -199,7 +200,7 @@
                 <div class="swiper-slide"><img src="DSC_3580.jpg" alt="婚紗照11"></div>
                 <!-- <div class="swiper-slide"><img src="DSC_3631.jpg" alt="婚紗照5"></div> -->
                 <div class="swiper-slide"><img src="DSC_3679.jpg" alt="婚紗照12"></div>
-                <!-- <div class="swiper-slide"><img src="DSC_3686.jpg" alt="婚紗照6"></div> -->
+                <!-- <div class="swiper-slide"><img src="DSC_3686.jpg" alfft="婚紗照6"></div> -->
                 <div class="swiper-slide custom-adjust3"><img src="DSC_3689.jpg" alt="婚紗照7"></div>
                 <div class="swiper-slide"><img src="DSC_3704.jpg" alt="婚紗照8"></div>
                 <div class="swiper-slide"><img src="DSC_3743.jpg" alt="婚紗照9"></div>
@@ -257,16 +258,100 @@
                 <strong>【婚禮時間】</strong><br>
                 2026年03月28日 (星期六)<br>
                 12:00 入席 | 12:30 準時開宴
+                <div class="slideshow-container">
+                    <img src="IMG_0665.JPG" class="fade-img active">
+                    <img src="IMG_0666.JPG" class="fade-img">
+                    <img src="IMG_0667.JPG" class="fade-img">
+                    <img src="IMG_0668.JPG" class="fade-img">
+                    <img src="IMG_0669.JPG" class="fade-img">
+                </div>
             </div>
         </div>
     </section>
+
     
+    <style>
+        .fig01 {
+            display: block;     /* 将图片转为块级元素 */
+            margin-left: auto;  /* 左右外边距自动平分 */
+            margin-right: auto;
+            /* margin-top: -100px; */
+            width: 100%;      /* 让图片自动撑满父容器的宽度 */
+            max-width: 200px; /* 但最大不超过 500px */
+            /* border-radius: 10px; 加个圆角 */
+            /* box-shadow: 2px 2px 5px rgba(0,0,0,0.3); 加个阴影 */
+            }
+        .slideshow-container {
+        position: relative;
+        width: 100%;       /* 寬度隨螢幕縮放 */
+        height: 60vh;      /* 使用 vh (螢幕高度百分比)，讓它在手機上也有一定高度 */
+        max-width: 800px;  /* 限制大螢幕時不要過大 */
+        margin: auto;
+        overflow: hidden;
+        }
+
+        .fade-img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* 絕對定位下的完美居中 */
+        
+        width: 100%;
+        height: 100%;
+        
+        /* 關鍵屬性：不變形 */
+        object-fit: contain; 
+        /* 如果你希望看到整張圖不被裁切（但會有留白），請改用 object-fit: contain; */
+        
+        opacity: 0;
+        z-index: 1;
+        }
+
+        /* 即將出現的下一張：直接顯示並稍微提高層級 */
+        .fade-img.active {
+        opacity: 1;
+        z-index: 2;
+        }
+
+        /* 正在淡出的那張：放在最頂層，執行透明度動畫 */
+        .fade-img.exiting {
+        opacity: 0;
+        z-index: 3;
+        transition: opacity 1.5s ease-in-out;
+        }
+    </style>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     
 
 
     <script>
+        const images = document.querySelectorAll('.fade-img');
+        let currentIndex = 0;
+
+        function nextImage() {
+        const currentImg = images[currentIndex];
+        const nextIndex = (currentIndex + 1) % images.length;
+        const nextImg = images[nextIndex];
+
+        // 1. 讓當前圖片變成「正在淡出」狀態 (跑到最上層並開始變透明)
+        currentImg.classList.add('exiting');
+        currentImg.classList.remove('active');
+
+        // 2. 讓下一張圖片「立刻出現」在它後面 (透明度已經是 1)
+        nextImg.classList.add('active');
+
+        // 3. 當淡出動畫結束後，移除 exiting 標籤，恢復原狀供下次循環
+        setTimeout(() => {
+            currentImg.classList.remove('exiting');
+        }, 1500); // 這裡的時間要跟 CSS transition 一致
+
+        currentIndex = nextIndex;
+        }
+
+        setInterval(nextImage, 1000);
+
         // 設定婚禮日期
         const weddingDate = new Date("Mar 28, 2026 12:00:00").getTime();
 
