@@ -70,7 +70,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999; /* 確保在最上層 */
-            transition: opacity 3s ease, visibility 3s; /* 消失時的過場動畫 */
+            transition: opacity 3s ease, visibility 5s; /* 消失時的過場動畫 */
             cursor: pointer;
         }
         #music-control {
@@ -215,9 +215,9 @@
 
     <section class="content0">
         <div class="info-card0">
-            
-            <h2>Wedding Invitation</h2>
-            <p>誠摯地邀請您參與我們的幸福時刻</p>
+            <img src="wi.png" alt="圖片02" class="top-img">
+            <!-- <h2>Wedding Invitation</h2> -->
+            <!-- <p>誠摯地邀請您參與我們的幸福時刻</p> -->
             
             <div id="countdown">
                 <div class="time-box"><span id="days">0</span>天</div>
@@ -245,6 +245,11 @@
             margin-left: 30px; /* 讓圖片跟在文字後面 */
             margin-top: -90px; /* 讓圖片跟在文字後面 */
             border-radius: 8px;     /* 給圖片一點點圓角（可選） */
+        }
+        .top-img{
+            width: 80%;       /* 寬度隨手機縮放 */
+            max-width: 400px; /* 電腦版不要太大 */
+            object-fit: cover;      /* 避免圖片變形 */
         }
     </style>
 
@@ -423,7 +428,7 @@
         // 3. (選配) 這裡可以重新啟動 AOS 動畫，讓主頁面的動畫從頭開始
         setTimeout(() => {
             AOS.init({
-                duration: 2000,
+                duration: 3000,
                 once: true,
                 offset: 100 // 距離滾動條多少距離觸發
             });
